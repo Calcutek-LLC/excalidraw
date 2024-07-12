@@ -797,22 +797,22 @@ const ExcalidrawWrapper = () => {
         handleKeyboardGlobally={true}
         autoFocus={true}
         theme={editorTheme}
-        renderTopRightUI={(isMobile) => {
-          if (isMobile || !collabAPI || isCollabDisabled) {
-            return null;
-          }
-          return (
-            <div className="top-right-ui">
-              {collabError.message && <CollabError collabError={collabError} />}
-              <LiveCollaborationTrigger
-                isCollaborating={isCollaborating}
-                onSelect={() =>
-                  setShareDialogState({ isOpen: true, type: "share" })
-                }
-              />
-            </div>
-          );
-        }}
+        // renderTopRightUI={(isMobile) => {
+        //   if (isMobile || !collabAPI || isCollabDisabled) {
+        //     return null;
+        //   }
+        //   return (
+        //     <div className="top-right-ui">
+        //       {collabError.message && <CollabError collabError={collabError} />}
+        //       <LiveCollaborationTrigger
+        //         isCollaborating={isCollaborating}
+        //         onSelect={() =>
+        //           setShareDialogState({ isOpen: true, type: "share" })
+        //         }
+        //       />
+        //     </div>
+        //   );
+        // }}
       >
         <AppMainMenu
           onCollabDialogOpen={onCollabDialogOpen}
