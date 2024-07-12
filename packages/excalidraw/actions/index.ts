@@ -12,7 +12,7 @@ export {
   actionChangeBackgroundColor,
   actionChangeStrokeWidth,
   actionChangeFillStyle,
-  actionChangeSloppiness,
+  // actionChangeSloppiness,
   actionChangeOpacity,
   actionChangeFontSize,
   actionChangeFontFamily,
