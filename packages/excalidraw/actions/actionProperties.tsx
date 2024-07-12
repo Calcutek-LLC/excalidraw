@@ -469,57 +469,57 @@ export const actionChangeStrokeWidth = register({
   ),
 });
 
-export const actionChangeSloppiness = register({
-  name: "changeSloppiness",
-  label: "labels.sloppiness",
-  trackEvent: false,
-  perform: (elements, appState, value) => {
-    return {
-      elements: changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          seed: randomInteger(),
-          roughness: value,
-        }),
-      ),
-      appState: { ...appState, currentItemRoughness: value },
-      storeAction: StoreAction.CAPTURE,
-    };
-  },
-  PanelComponent: ({ elements, appState, updateData }) => (
-    <fieldset>
-      <legend>{t("labels.sloppiness")}</legend>
-      <ButtonIconSelect
-        group="sloppiness"
-        options={[
-          {
-            value: 0,
-            text: t("labels.architect"),
-            icon: SloppinessArchitectIcon,
-          },
-          {
-            value: 1,
-            text: t("labels.artist"),
-            icon: SloppinessArtistIcon,
-          },
-          {
-            value: 2,
-            text: t("labels.cartoonist"),
-            icon: SloppinessCartoonistIcon,
-          },
-        ]}
-        value={getFormValue(
-          elements,
-          appState,
-          (element) => element.roughness,
-          (element) => element.hasOwnProperty("roughness"),
-          (hasSelection) =>
-            hasSelection ? null : appState.currentItemRoughness,
-        )}
-        onChange={(value) => updateData(value)}
-      />
-    </fieldset>
-  ),
-});
+// export const actionChangeSloppiness = register({
+//   name: "changeSloppiness",
+//   label: "labels.sloppiness",
+//   trackEvent: false,
+//   perform: (elements, appState, value) => {
+//     return {
+//       elements: changeProperty(elements, appState, (el) =>
+//         newElementWith(el, {
+//           seed: randomInteger(),
+//           roughness: value,
+//         }),
+//       ),
+//       appState: { ...appState, currentItemRoughness: value },
+//       storeAction: StoreAction.CAPTURE,
+//     };
+//   },
+//   PanelComponent: ({ elements, appState, updateData }) => (
+//     <fieldset>
+//       <legend>{t("labels.sloppiness")}</legend>
+//       <ButtonIconSelect
+//         group="sloppiness"
+//         options={[
+//           {
+//             value: 0,
+//             text: t("labels.architect"),
+//             icon: SloppinessArchitectIcon,
+//           },
+//           {
+//             value: 1,
+//             text: t("labels.artist"),
+//             icon: SloppinessArtistIcon,
+//           },
+//           {
+//             value: 2,
+//             text: t("labels.cartoonist"),
+//             icon: SloppinessCartoonistIcon,
+//           },
+//         ]}
+//         value={getFormValue(
+//           elements,
+//           appState,
+//           (element) => element.roughness,
+//           (element) => element.hasOwnProperty("roughness"),
+//           (hasSelection) =>
+//             hasSelection ? null : appState.currentItemRoughness,
+//         )}
+//         onChange={(value) => updateData(value)}
+//       />
+//     </fieldset>
+//   ),
+// });
 
 export const actionChangeStrokeStyle = register({
   name: "changeStrokeStyle",
@@ -1013,73 +1013,73 @@ export const actionChangeVerticalAlign = register({
   },
 });
 
-export const actionChangeRoundness = register({
-  name: "changeRoundness",
-  label: "Change edge roundness",
-  trackEvent: false,
-  perform: (elements, appState, value) => {
-    return {
-      elements: changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          roundness:
-            value === "round"
-              ? {
-                  type: isUsingAdaptiveRadius(el.type)
-                    ? ROUNDNESS.ADAPTIVE_RADIUS
-                    : ROUNDNESS.PROPORTIONAL_RADIUS,
-                }
-              : null,
-        }),
-      ),
-      appState: {
-        ...appState,
-        currentItemRoundness: value,
-      },
-      storeAction: StoreAction.CAPTURE,
-    };
-  },
-  PanelComponent: ({ elements, appState, updateData }) => {
-    const targetElements = getTargetElements(
-      getNonDeletedElements(elements),
-      appState,
-    );
+// export const actionChangeRoundness = register({
+//   name: "changeRoundness",
+//   label: "Change edge roundness",
+//   trackEvent: false,
+//   perform: (elements, appState, value) => {
+//     return {
+//       elements: changeProperty(elements, appState, (el) =>
+//         newElementWith(el, {
+//           roundness:
+//             value === "round"
+//               ? {
+//                   type: isUsingAdaptiveRadius(el.type)
+//                     ? ROUNDNESS.ADAPTIVE_RADIUS
+//                     : ROUNDNESS.PROPORTIONAL_RADIUS,
+//                 }
+//               : null,
+//         }),
+//       ),
+//       appState: {
+//         ...appState,
+//         currentItemRoundness: value,
+//       },
+//       storeAction: StoreAction.CAPTURE,
+//     };
+//   },
+//   PanelComponent: ({ elements, appState, updateData }) => {
+//     const targetElements = getTargetElements(
+//       getNonDeletedElements(elements),
+//       appState,
+//     );
 
-    const hasLegacyRoundness = targetElements.some(
-      (el) => el.roundness?.type === ROUNDNESS.LEGACY,
-    );
+//     const hasLegacyRoundness = targetElements.some(
+//       (el) => el.roundness?.type === ROUNDNESS.LEGACY,
+//     );
 
-    return (
-      <fieldset>
-        <legend>{t("labels.edges")}</legend>
-        <ButtonIconSelect
-          group="edges"
-          options={[
-            {
-              value: "sharp",
-              text: t("labels.sharp"),
-              icon: EdgeSharpIcon,
-            },
-            {
-              value: "round",
-              text: t("labels.round"),
-              icon: EdgeRoundIcon,
-            },
-          ]}
-          value={getFormValue(
-            elements,
-            appState,
-            (element) =>
-              hasLegacyRoundness ? null : element.roundness ? "round" : "sharp",
-            (element) => element.hasOwnProperty("roundness"),
-            (hasSelection) =>
-              hasSelection ? null : appState.currentItemRoundness,
-          )}
-          onChange={(value) => updateData(value)}
-        />
-      </fieldset>
-    );
-  },
-});
+//     return (
+//       <fieldset>
+//         <legend>{t("labels.edges")}</legend>
+//         <ButtonIconSelect
+//           group="edges"
+//           options={[
+//             {
+//               value: "sharp",
+//               text: t("labels.sharp"),
+//               icon: EdgeSharpIcon,
+//             },
+//             {
+//               value: "round",
+//               text: t("labels.round"),
+//               icon: EdgeRoundIcon,
+//             },
+//           ]}
+//           value={getFormValue(
+//             elements,
+//             appState,
+//             (element) =>
+//               hasLegacyRoundness ? null : element.roundness ? "round" : "sharp",
+//             (element) => element.hasOwnProperty("roundness"),
+//             (hasSelection) =>
+//               hasSelection ? null : appState.currentItemRoundness,
+//           )}
+//           onChange={(value) => updateData(value)}
+//         />
+//       </fieldset>
+//     );
+//   },
+// });
 
 const getArrowheadOptions = (flip: boolean) => {
   return [
