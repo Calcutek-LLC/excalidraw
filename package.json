@@ -1,14 +1,8 @@
 {
   "private": true,
-  "name": "excalidraw-monorepo",
+  "name": "flooplan-editor",
   "packageManager": "yarn@1.22.22",
-  "workspaces": [
-    "excalidraw-app",
-    "packages/excalidraw",
-    "packages/utils",
-    "examples/excalidraw",
-    "examples/excalidraw/*"
-  ],
+  "workspaces": [],
   "dependencies": {
     "@excalidraw/random-username": "1.0.0",
     "@sentry/browser": "6.2.5",
